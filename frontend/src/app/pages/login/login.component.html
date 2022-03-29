@@ -1,0 +1,53 @@
+<app-centered-card title="Login">
+  <div *ngIf="error | async" class="error">
+    {{ (error | async)?.error }}
+  </div>
+
+  <form (ngSubmit)="onSubmit()"
+        fxLayout="column"
+        #f="ngForm"
+        autocomplete="off"
+  >
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input type="email"
+             name="email"
+             matInput
+             autocomplete="username"
+             ngModel
+             #email="ngModel"
+             required
+             email
+      />
+      <mat-error *ngIf="email.touched && email.hasError('required')">
+        Field is required
+      </mat-error>
+      <mat-error *ngIf="email.touched && email.hasError('email')">
+        Input correct email
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input type="password"
+             name="password"
+             matInput
+             autocomplete="current-password"
+             ngModel
+             #password="ngModel"
+             required
+      />
+      <mat-error *ngIf="password.touched && password.hasError('required')">
+        Field is required
+      </mat-error>
+    </mat-form-field>
+    <button type="submit"
+            mat-raised-button
+            color="primary"
+            [disabled]="f.invalid || (isLoading | async)"
+    >
+      <app-loader [isLoading]="isLoading | async" size="sm">
+        Login
+      </app-loader>
+    </button>
+  </form>
+</app-centered-card>
