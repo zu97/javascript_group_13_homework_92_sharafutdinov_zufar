@@ -1,0 +1,6 @@
+<div *ngIf="spinnerIsLoading; else content">
+  <mat-spinner [diameter]="spinnerSize"></mat-spinner>
+</div>
+<ng-template #content>
+  <ng-content></ng-content>
+</ng-template>
