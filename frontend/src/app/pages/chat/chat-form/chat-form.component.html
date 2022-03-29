@@ -1,0 +1,28 @@
+<mat-card>
+  <form (ngSubmit)="onSubmit()"
+        #f="ngForm"
+        fxLayout="column"
+        fxLayoutGap="16px"
+  >
+    <div class="message-line" fxLayout="row" fxLayoutGap="16px">
+      <mat-form-field appearance="outline">
+        <mat-label>Enter message</mat-label>
+        <input type="text"
+               name="message"
+               matInput
+               ngModel
+               #message="ngModel"
+               required
+        />
+        <mat-error *ngIf="message.touched && message.hasError('required')">
+          Field is required
+        </mat-error>
+      </mat-form-field>
+      <button type="submit"
+              mat-stroked-button
+              color="primary"
+              [disabled]="f.invalid"
+      >Send</button>
+    </div>
+  </form>
+</mat-card>

@@ -1,0 +1,8 @@
+<mat-card>
+  <mat-card-title>Messages</mat-card-title>
+  <mat-card-content>
+    <p *ngFor="let message of (messages | async)">
+      <strong>{{ message.user.displayName }}:</strong> {{ message.message }}
+    </p>
+  </mat-card-content>
+</mat-card>

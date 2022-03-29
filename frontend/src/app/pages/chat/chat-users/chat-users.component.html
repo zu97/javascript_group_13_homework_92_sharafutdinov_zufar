@@ -1,0 +1,9 @@
+<mat-card>
+  <mat-card-title>Online users</mat-card-title>
+  <mat-card-content>
+    <p *ngFor="let user of (users | async)">
+      {{ user.displayName }}
+    </p>
+  </mat-card-content>
+</mat-card>
+

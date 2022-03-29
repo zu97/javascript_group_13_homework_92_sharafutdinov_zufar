@@ -1,0 +1,10 @@
+<div fxLayout="row" fxLayoutGap="16px">
+  <app-chat-users></app-chat-users>
+  <div fxFlex="1 1 auto"
+       fxLayout="column"
+       fxLayoutGap="16px"
+  >
+    <app-chat-messages></app-chat-messages>
+    <app-chat-form [ws]="this.ws"></app-chat-form>
+  </div>
+</div>
