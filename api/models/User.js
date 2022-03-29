@@ -17,12 +17,6 @@ const UserSchema = new Schema({
         type: String,
         required: true,
     },
-    role: {
-        type: String,
-        required: true,
-        enum: ['admin', 'user'],
-        default: 'user',
-    },
     isOnline: {
         type: Boolean,
         required: true,
