@@ -17,10 +17,11 @@ const UserSchema = new Schema({
         type: String,
         required: true,
     },
-    isOnline: {
-        type: Boolean,
+    role: {
+        type: String,
         required: true,
-        default: false,
+        enum: ['admin', 'user'],
+        default: 'user'
     },
     token: {
         type: String,

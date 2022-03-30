@@ -22,6 +22,7 @@ const run = async () => {
         email: 'john@gmail.com',
         password: '123',
         displayName: 'John',
+        role: 'admin',
         token: nanoid()
     });
 
