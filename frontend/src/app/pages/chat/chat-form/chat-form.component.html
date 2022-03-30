@@ -2,8 +2,16 @@
   <form (ngSubmit)="onSubmit()"
         #f="ngForm"
         fxLayout="column"
-        fxLayoutGap="16px"
   >
+    <mat-form-field appearance="outline">
+      <mat-label>Select username</mat-label>
+      <mat-select name="recipient" ngModel>
+        <mat-option>-</mat-option>
+        <mat-option *ngFor="let user of (users | async)" [value]="user._id">
+          {{ user.displayName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
     <div class="message-line" fxLayout="row" fxLayoutGap="16px">
       <mat-form-field appearance="outline">
         <mat-label>Enter message</mat-label>

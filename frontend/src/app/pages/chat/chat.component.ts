@@ -4,7 +4,13 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../../store/types';
 import { Observable, Subscription } from 'rxjs';
 import { User } from '../../models/user.model';
-import { messagesIncome, userDisconnected, usersConnected } from '../../store/chat.actions';
+import {
+  closeConnection,
+  messagesIncome,
+  removeMessage,
+  userDisconnected,
+  usersConnected
+} from '../../store/chat.actions';
 
 @Component({
   selector: 'app-chat',
@@ -37,10 +43,13 @@ export class ChatComponent implements OnInit, OnDestroy {
           this.store.dispatch(usersConnected({ users: message.users }));
           break;
         case 'USER_DISCONNECTED':
-          this.store.dispatch(userDisconnected({ userId: message.id }));
+          this.store.dispatch(userDisconnected({ userId: message._id }));
           break;
         case 'MESSAGES':
           this.store.dispatch(messagesIncome({ messages: message.messages }));
+          break;
+        case 'REMOVE_MESSAGE':
+          this.store.dispatch(removeMessage({ messageId: message._id }));
           break;
         default:
           return;
@@ -72,6 +81,8 @@ export class ChatComponent implements OnInit, OnDestroy {
 
     this.ws.close();
     this.userSubscription.unsubscribe();
+
+    this.store.dispatch(closeConnection());
   }
 
 }

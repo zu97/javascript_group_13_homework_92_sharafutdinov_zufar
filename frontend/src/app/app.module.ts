@@ -33,6 +33,7 @@ import { AuthInterceptor } from './auth.interceptor';
 import { ChatUsersComponent } from './pages/chat/chat-users/chat-users.component';
 import { ChatFormComponent } from './pages/chat/chat-form/chat-form.component';
 import { ChatMessagesComponent } from './pages/chat/chat-messages/chat-messages.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -50,27 +51,28 @@ import { ChatMessagesComponent } from './pages/chat/chat-messages/chat-messages.
     ChatFormComponent,
     ChatMessagesComponent
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    FlexLayoutModule,
-    LayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    HttpClientModule,
-    FormsModule,
-    AppStoreModule,
-    AppRoutingModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatCardModule,
-    MatProgressSpinnerModule,
-    MatMenuModule,
-    MatSnackBarModule
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        FlexLayoutModule,
+        LayoutModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatIconModule,
+        MatListModule,
+        HttpClientModule,
+        FormsModule,
+        AppStoreModule,
+        AppRoutingModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatCardModule,
+        MatProgressSpinnerModule,
+        MatMenuModule,
+        MatSnackBarModule,
+        MatSelectModule
+    ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
   ],
